@@ -12,14 +12,17 @@ export default async function EditDebtPage(props: {
 
   try {
     const supabase = await createClient();
-    const { data: userResponse } = await supabase.auth.getUser();
 
-    if (userResponse.user) {
+    const {
+      data: { user }
+    } = await supabase.auth.getUser();
+
+    if (user) {
       const { data, error } = await supabase
         .from('debts')
         .select('*')
         .eq('id', id)
-        .eq('user_id', userResponse.user.id)
+        .eq('user_id', user.id)
         .limit(1)
         .single();
 
