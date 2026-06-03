@@ -79,15 +79,17 @@ Buka [http://localhost:3000](http://localhost:3000).
 
 ## Approach
 
-Keputusan teknis yang paling saya banggakan adalah arsitektur **SSR + React Query Hydration**. Di halaman Dashboard dan Edit, data di-fetch langsung di sisi server pakai Supabase server client, lalu dilempar ke client sebagai `initialData` di hook React Query. Hasilnya user dapet UI yang langsung jadi tanpa loading skeleton di first load (zero layout shift), tapi di saat yang sama tetep punya semua fungsionalitas React Query di client — background refetching, optimistic cache updates, dan seamless mutation. Selain itu, layer keamanan dibuat berlapis: Zod validation di client + server, RLS di level database, dan auth middleware di proxy. Jadi biarpun ada yang coba bypass frontend, data tetep aman.
+Keputusan teknis yang paling saya banggakan adalah arsitektur **SSR + React Query Hydration**. Di halaman Dashboard dan Edit, data di-fetch langsung di sisi server pakai Supabase server client, lalu dilempar ke client sebagai `initialData` di hook React Query. Hasilnya user dapet UI yang langsung jadi tanpa loading skeleton di first load (zero layout shift), tapi di saat yang sama tetep punya semua fungsionalitas React Query di client, background refetching, optimistic cache updates, dan seamless mutation.
+
+Selain itu, layer keamanan dibuat berlapis: Zod validation di client + server, RLS di level database, dan auth middleware di proxy. Jadi biarpun ada yang coba bypass frontend, data tetep aman.
 
 ## Trade-off
 
 Kalau ada 1 hari lagi, yang akan saya polish:
 
-- **Pagination / Infinite Scroll** — Saat ini semua data diambil sekaligus. Kalau user punya ribuan catatan, perlu cursor-based pagination di backend + `useInfiniteQuery` di frontend.
-- **E2E Testing** — Automated testing pakai Playwright buat critical flow (login, create, edit, delete, tandai lunas) supaya gak ada regresi setiap deploy.
-- **Optimistic Updates** — Saat ini mutation nunggu response server dulu baru update UI. Bisa dipercepat dengan optimistic update di React Query supaya UX terasa lebih instant.
+- **Pagination / Infinite Scroll** — Saat ini semua data diambil sekaligus. Kalau user punya banyak catatan, kita bisa pakai offset-based atau cursor-based pagination supaya performa tetap oke.
+- **E2E Testing** — Automated testing dari UI sampai API belum ada. Bisa pakai vitest + testing-library untuk testing unit/component di frontend dan di API routes.
+- **Optimistic Updates** — Saat ini mutation nunggu response server dulu baru update UI aka pessimistic updates. Bisa dipercepat dengan optimistic update di React Query supaya UX terasa lebih instant.
 
 ## Time Spent
 
@@ -125,5 +127,4 @@ Kalau ada 1 hari lagi, yang akan saya polish:
 
 - ✅ SSR + React Query hydration — Data di-fetch di server, zero layout shift di first load
 - ✅ Database indexes — Composite index buat optimasi query
-- ✅ Delete confirmation modal — Custom modal, bukan `window.confirm`
 - ✅ React Compiler — Auto-memoization, tanpa `useMemo`/`useCallback` manual
