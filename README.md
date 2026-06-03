@@ -90,6 +90,7 @@ Kalau ada 1 hari lagi, yang akan saya polish:
 - **Pagination / Infinite Scroll** — Saat ini semua data diambil sekaligus. Kalau user punya banyak catatan, kita bisa pakai offset-based atau cursor-based pagination supaya performa tetap oke.
 - **E2E Testing** — Automated testing dari UI sampai API belum ada. Bisa pakai vitest + testing-library untuk testing unit/component di frontend dan di API routes.
 - **Optimistic Updates** — Saat ini mutation nunggu response server dulu baru update UI aka pessimistic updates. Bisa dipercepat dengan optimistic update di React Query supaya UX terasa lebih instant.
+- **CI/CD Database Migration** — Saat ini migrasi database masih manual (`supabase db push`). Idealnya bisa di-automate lewat GitHub Actions supaya setiap push ke `main`, migration otomatis jalan ke Supabase tanpa perlu manual.
 
 ## Time Spent
 
