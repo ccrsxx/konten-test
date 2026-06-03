@@ -26,8 +26,8 @@ export function DebtChart({ debts }: DebtChartProps): React.JSX.Element | null {
 
   if (total === 0) return null;
 
-  const owedToMePercent = Math.round((owedToMe / total) * 100);
-  const iOwePercent = Math.round((iOwe / total) * 100);
+  const owedToMePercent = ((owedToMe / total) * 100).toFixed(2);
+  const iOwePercent = ((iOwe / total) * 100).toFixed(2);
 
   return (
     <section className='w-full grid gap-4 p-4 border border-border rounded-md bg-muted-background/30'>
