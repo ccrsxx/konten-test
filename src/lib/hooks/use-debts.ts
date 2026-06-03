@@ -105,6 +105,12 @@ export function useUpdateDebt(
       }),
     onSuccess: (data) => {
       queryClient.setQueryData(debtKeys.detail(id), data);
+
+      queryClient.setQueriesData<Debt[]>({ queryKey: debtKeys.all }, (old) => {
+        if (!Array.isArray(old)) return old;
+        return old.map((debt) => (debt.id === id ? data : debt));
+      });
+
       queryClient.invalidateQueries({ queryKey: debtKeys.all });
     }
   });
