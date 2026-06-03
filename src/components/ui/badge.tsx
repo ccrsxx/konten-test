@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '@/lib/utils';
 import type { ReactNode } from 'react';
 
 type BadgeProps = {
@@ -21,7 +21,7 @@ export function Badge({
 }: BadgeProps): React.JSX.Element {
   return (
     <span
-      className={clsx(
+      className={cn(
         'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium',
         variantClasses[variant],
         className

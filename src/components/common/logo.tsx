@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { DefaultLogo } from './default-logo';
 
@@ -24,7 +24,7 @@ export function Logo({
   return (
     <Link
       href={href ?? '/'}
-      className={clsx(
+      className={cn(
         'flex shrink-0 items-center gap-4 text-4xl text-accent-main',
         clickable ? 'pointer-events-auto' : 'pointer-events-none',
         className
@@ -32,7 +32,7 @@ export function Logo({
       tabIndex={-1}
     >
       <DefaultLogo
-        className={clsx(logoClassName, hideIconOnMobile && 'hidden md:inline')}
+        className={cn(logoClassName, hideIconOnMobile && 'hidden md:inline')}
       />
     </Link>
   );

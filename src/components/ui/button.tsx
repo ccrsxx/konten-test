@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '@/lib/utils';
 import type { ComponentProps } from 'react';
 import { Loading } from './loading';
 
@@ -18,7 +18,7 @@ export function Button({
 
   return (
     <button
-      className={clsx(
+      className={cn(
         'smooth-tab',
         loading &&
           'relative text-transparent! brightness-75 disabled:cursor-wait',

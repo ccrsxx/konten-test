@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '@/lib/utils';
 import { AlertCircle, CheckCircle2, Info } from 'lucide-react';
 
 type AlertProps = {
@@ -13,7 +13,7 @@ export function Alert({
   className
 }: AlertProps): React.JSX.Element {
   return (
-    <div className={clsx('flex items-center gap-2', className)}>
+    <div className={cn('flex items-center gap-2', className)}>
       <div className='shrink-0'>
         {variant === 'error' ? (
           <AlertCircle className='text-lg text-alert-error' />

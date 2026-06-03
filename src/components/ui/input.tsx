@@ -1,4 +1,4 @@
-import { clsx } from 'clsx';
+import { cn } from '@/lib/utils';
 import type { PropsWithChildren, ReactNode } from 'react';
 import type { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 import { Alert } from './alert';
@@ -45,7 +45,7 @@ export function Input({
 
   return (
     <div
-      className={clsx(
+      className={cn(
         'grid gap-2',
         containerClassName,
         children && 'grid-cols-[1fr,auto] items-center gap-4'
@@ -59,7 +59,7 @@ export function Input({
       )}
       {type === 'textarea' ? (
         <textarea
-          className={clsx('custom-input', inputErrorStyle, inputClassName)}
+          className={cn('custom-input', inputErrorStyle, inputClassName)}
           id={id}
           rows={4}
           tabIndex={tabIndex}
@@ -71,7 +71,7 @@ export function Input({
         />
       ) : (
         <input
-          className={clsx('custom-input', inputErrorStyle, inputClassName)}
+          className={cn('custom-input', inputErrorStyle, inputClassName)}
           id={id}
           type={type}
           tabIndex={tabIndex}
