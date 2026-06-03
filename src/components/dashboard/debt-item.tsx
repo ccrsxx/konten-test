@@ -88,8 +88,8 @@ export function DebtItem({ debt }: DebtItemProps): React.JSX.Element {
                 : 'bg-transparent text-muted hover:text-alert-success hover:border-alert-success/50'
             )}
             title={isSettled ? 'Batalkan lunas' : 'Tandai lunas'}
+            loading={updateMutation.isPending}
             onClick={handleToggleSettled}
-            disabled={updateMutation.isPending}
           >
             <Check className='h-4 w-4' />
           </Button>
