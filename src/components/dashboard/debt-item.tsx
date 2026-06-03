@@ -55,22 +55,26 @@ export function DebtItem({ debt }: DebtItemProps): React.JSX.Element {
             {isSettled ? 'Lunas' : 'Belum lunas'}
           </Badge>
         </div>
-        <div className='flex items-center gap-2 text-sm text-muted'>
+        <div className='flex flex-wrap items-center gap-2 text-sm text-muted'>
           {debt.settled_at && (
             <>
               <span className='text-alert-success'>
-                Lunas {formatRelativeTime(debt.settled_at)}
+                Lunas / {formatRelativeTime(debt.settled_at)}
               </span>
               <span>•</span>
             </>
           )}
-          <span>{formatRelativeTime(debt.created_at)}</span>
+          <span>Dibuat / {formatRelativeTime(debt.created_at)}</span>
+          {debt.due_date && (
+            <>
+              <span>•</span>
+              <span>Deadline / {formatRelativeTime(debt.due_date)}</span>
+            </>
+          )}
           {debt.note && (
             <>
               <span>•</span>
-              <span className='truncate max-w-48' title={debt.note}>
-                {debt.note}
-              </span>
+              <span title={debt.note}>Note / {debt.note}</span>
             </>
           )}
         </div>

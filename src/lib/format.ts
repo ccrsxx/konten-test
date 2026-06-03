@@ -29,7 +29,10 @@ export function formatRelativeTime(dateString: string): string {
 
   if (diffDays === 0) return 'Hari ini';
   if (diffDays === 1) return 'Kemarin';
+  if (diffDays === -1) return 'Besok';
+
   if (diffDays > 1 && diffDays <= 7) return `${diffDays} hari lalu`;
+  if (diffDays < -1 && diffDays >= -7) return `${Math.abs(diffDays)} hari lagi`;
 
   // For older dates, return full format (e.g. 15 Jan 2024)
   return date.toLocaleDateString('id-ID', {
