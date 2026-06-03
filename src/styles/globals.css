@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+
+@import './colors.css';
+@import './utils.css';
+@import './modal.css';
+
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+body {
+  @apply bg-background text-primary;
+}
+
+::selection {
+  @apply bg-accent-main text-white;
+}

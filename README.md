@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kasbon
 
-## Getting Started
+Web app sederhana buat track utang piutang pribadi.
+Dibuat dengan Next.js 16 App Router, Tailwind CSS v4, dan Supabase.
 
-First, run the development server:
+## Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Live Demo:** [Tulis Link Vercel Di Sini]
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup & Menjalankan Lokal
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone repository:**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   git clone <repo-url>
+   cd kasbon
+   ```
 
-## Learn More
+2. **Install dependencies:**
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Setup Environment Variables:**
+   Copy file `.env.example` ke `.env.local` dan isi nilainya dengan credential Supabase project kamu.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   cp .env.example .env.local
+   ```
 
-## Deploy on Vercel
+   _Note: Pastikan kamu sudah membuat project di Supabase dan menyalakan Supabase Auth (Email & Password)._
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Migrasi Database:**
+   Gunakan Supabase CLI untuk apply migrasi dan RLS ke database kamu:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```bash
+   npx supabase link --project-ref <your-project-ref>
+   npx supabase db push
+   ```
+
+   _Atau kamu bisa copy-paste manual isi file SQL yang ada di folder `supabase/migrations/` ke SQL Editor di dashboard Supabase kamu berurutan._
+
+5. **Jalankan Aplikasi:**
+   ```bash
+   npm run dev
+   ```
+   Buka `http://localhost:3000` di browser.
+
+## Approach & Keputusan Teknis
+
+[Tulis 1 paragraf di sini tentang keputusan teknis yang paling kamu banggakan. Misalnya tentang penggunaan Server-Side Rendering (SSR) yang dikombinasikan dengan React Query Hydration untuk UX yang sangat cepat, atau struktur komponen yang sangat modular, dll.]
+
+## Trade-off & Future Polish
+
+[Tulis di sini: Kalau ada 1 hari lagi, apa yang akan kamu polish? Misalnya nambahin dark mode toggle, e2e testing pakai Cypress/Playwright, atau notifikasi email kalau utang udah jatuh tempo.]
+
+## Time Spent
+
+[Tulis dengan jujur berapa lama waktu yang dihabiskan untuk menyelesaikan test ini.]
