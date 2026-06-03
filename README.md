@@ -1,10 +1,10 @@
-# Kontent Test — Kasbon App
+# Konten Test
 
 Web app pencatatan utang piutang pribadi. Catat siapa hutang berapa, tandai lunas kalau udah dibayar, dan lihat summary total.
 
 ## Demo
 
-**Live:** [https://kontent-test.vercel.app](https://kontent-test.vercel.app)
+**Live:** [https://konten-test.vercel.app](https://konten-test.vercel.app)
 
 **Loom:** TODO
 
