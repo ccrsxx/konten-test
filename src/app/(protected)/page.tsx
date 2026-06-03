@@ -7,13 +7,15 @@ export default async function DashboardPage(): Promise<React.JSX.Element> {
 
   try {
     const supabase = await createClient();
-    const { data: userResponse } = await supabase.auth.getUser();
+    const {
+      data: { user }
+    } = await supabase.auth.getUser();
 
-    if (userResponse.user) {
+    if (user) {
       const { data, error } = await supabase
         .from('debts')
         .select('*')
-        .eq('user_id', userResponse.user.id)
+        .eq('user_id', user.id)
         .order('created_at', { ascending: false });
 
       if (!error && data) {
